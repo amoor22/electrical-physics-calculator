@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="form-wrapper">
+    <!-- <form action="/login" method="post">
+        <label for="equation">Please enter the equation</label>
+        <input type="text" name="equation" id="equation">
+        <input type="text" name="latex" id="latex">
+        <input type="text" name="description" id="description">
+        <input type="text" name="img" id="img">
+    </form> -->
+    <form action="/login" method="post">
+        <input type="text" name="username" id="username" placeholder="Username">
+        <input type="password" name="password" id="password" placeholder="Password">
+        <button type="submit">login</button>
+    </form>
+</div>
+{% endblock %}

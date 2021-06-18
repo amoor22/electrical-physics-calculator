@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+body {
+    --body-bg: rgb(187, 245, 230);
+    transition: background-color 3s;
+    background-color: var(--body-bg);
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 50px;
+    /* margin-left: auto; */
+}
+header i {
+    margin-left: auto;
+    position: relative;
+    font-size: 30px;
+    overflow: hidden;
+}
+.info-bub {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: lawngreen;
+    transition: 1s;
+    clip-path: circle(10% at right top);
+    /* clip-path: circle(100%); */
+    z-index: 2;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+}
+.info-bub:hover {
+    background-color: lightblue;
+    clip-path: circle(100%);
+}
+.info-hover {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    clip-path: circle(10% at right top);
+    background-color: rgba(255, 255, 255, 0);
+    pointer-events: all;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Amiri', serif;
+    font-size: 1.5rem;
+}
+section h3 {
+    margin: 1.1rem;
+}
+.main-container {
+    background-color: var(--body-bg);
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+    /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+    grid-auto-rows: 60vh;
+    gap: 40px;
+}
+.equation-container {
+    font-size: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    background-color: rgb(241, 67, 67);
+    border-radius: 25px;
+    overflow: hidden;
+    text-align: center;
+}
+.equation-container:hover .outer {
+    top: -100%;
+}
+.equation-container .outer {
+    position: absolute;
+    border-radius: 25px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(0, 255, 34);
+    transition: all 0.5s;
+    font-size: 2rem;
+}
+.latex {
+    display: inline-block;
+}

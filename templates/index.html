@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<header>
+    <h1>Physics Calculator</h1>
+    <!-- <i class="fas fa-info-circle"> -->
+        <div class="info-bub">
+            <div class="info-hover"></div>
+            <section>
+                <h3>عمل الطالب: عمر صفوت</h3>
+                <h3>الصف: الثاني عشر - ب</h3>
+                <h3>تحت إشراف الأستاذ الفاضل: زياد عبد الفتاح </h3>
+                <h3>مدارس الإيمان - قسم البنين</h3>
+                <img src="static/school_logo.svg" alt="logo">
+            </section>        
+        </div>
+    </i>
+    <!-- clip rect idea -->
+</header>
+<div class="main-container">
+    {% for equation in equations %}
+        <div class="equation-container">
+            <a href="/calculator/{{ equation.id }}"><i class="fas fa-calculator"></i></a>     
+            <div class="outer">
+                <div class="equation">
+                    <span>
+                        {{ equation.title_ar }} 
+                    </span>
+                    {{ equation.latex }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<script>
+    let body = document.body;
+    let colors = [];
+    let generateColors = () => {
+        for (let i = 0; i < 25; i++) {
+            colors.push(`rgb(${rand(0, 255)}, ${rand(0, 255)}, ${rand(0, 255)})`)
+        }
+    }
+    generateColors()
+    function rand(start, end) {
+        return Math.floor(Math.random() * (end - start)) + start
+    }
+    let colorChange = setInterval(() => body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]
+    , 3000)
+    clearInterval(colorChange)
+    
+    let rgba = (r, g, b, a) => `rgba(${r}, ${g}, ${b}, ${a})` 
+    let cardCovers = document.querySelectorAll('.outer')
+    let cardColors = ['red', 'green', 'blue'];
+    let colorIndex = 0;
+    for (i = 0; i < cardCovers.length; i++) {
+        // cardCovers[i].style.backgroundColor = cardColors[colorIndex]
+        // colorIndex += 1
+        // if (colorIndex >= cardColors.length) {
+        //     colorIndex = 0
+        // }
+        cardCovers[i].style.background = "linear-gradient(180deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)"
+    }
+    cardCovers.forEach((cover) => cover.style.backgroundColor = rg)
+</script>
+{% endblock %}

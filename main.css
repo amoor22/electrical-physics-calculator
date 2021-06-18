@@ -1,0 +1,107 @@
+html, body {
+    height: 100%;
+    font-family: 'poppins', sans-serif;
+}
+body {
+    background-color: #264653;
+}
+.title {
+    font-size: 40px;
+    text-align: center;
+}
+form {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+.main-container {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-auto-rows: 60vh;
+    /* grid-row-gap: 20px;
+    grid-column-gap: 20px; */
+    grid-gap: 40px;
+}
+.book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #e76f51;
+    border-radius: 20px;
+    position: relative;
+}
+.book::before {
+    --shadow-offset: 5px;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(var(--shadow-offset) * -1);
+    background: linear-gradient(#8338ec, #f4a261);
+    width: calc(100% + var(--shadow-offset) * 2);
+    height: calc(100% + var(--shadow-offset) * 2);
+    filter: blur(5px);
+    border-radius: 15px;
+    z-index: -1;
+}
+.book img {
+    max-width: 80%;
+    max-height: 70%;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+.book h2 {
+    margin: 0;
+}
+.book .max-pages {
+    --height: 10px;
+    --border-radius: 10px;
+    position: relative;
+    width: 80%;
+    height: var(--height);
+    border-radius: var(--border-radius);
+    background-color: gray;
+}
+.book .current-page {
+    position: absolute;
+    width: attr(width);
+    height: var(--height);
+    border-radius: var(--border-radius);
+    background-color: green;
+}
+.book .read-more {
+    position: relative;
+    width: 70px;
+    height: 5%;
+    border: 4px solid white;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    overflow: hidden;
+}
+.book .read-more:hover .slide {
+    left: 0%;
+}
+.book .read-more:hover span {
+    color: rgba(0, 0, 0, 1);
+}
+.book .read-more .slide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+    left: -100%;
+    transition: all 0.5s;
+}
+.book .read-more span {
+    color: rgba(255, 255, 255, 1);
+    position: absolute;
+    white-space: nowrap;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s;
+}

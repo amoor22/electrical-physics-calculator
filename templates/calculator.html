@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/calculator.css">
+{% endblock %}
+
+{% block body %}
+<div class="navbar-part">
+    <i class="fas fa-bars menu"></i>
+    <i class="fas fa-arrow-left arrow"></i>
+    <div class="navbar-full">
+        <div class="nav-item">
+            <div class="hover-effect green"></div>
+            <i class="fas fa-home"></i>
+            <a href="/"></a>
+        </div>
+        {% for eq in equations %}
+        <div class="nav-item">
+            <div class="hover-effect"></div>
+            <a href="/calculator/{{ eq.id }}"></a>
+            <i class="fas fa-calculator"></i>
+            <span>
+                {{eq.title_ar}}
+            </span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="body-wrapper">
+    <div class="info-wrapper">
+        <div class="info">
+            <h2 style="text-align: right;">{{ equation.title_ar }}</h2>
+            {{ equation.info_ar|safe }}
+            <img src="{{ equation.img }}" alt="">
+            {% if equation.video %}
+            {{ equation.video|safe }}
+            {% endif %}
+            <!-- use a seperator instead of tags (\n) -->
+        </div>
+    </div>
+
+    <div class="inputs">
+        <form action="/calculator/{{equation.id}}" method="post" name="inputs" id="inputs" onsubmit="return validateForm()">
+            <!-- Request with variables as parameters -->
+            <div class="latex">
+                {{equation.latex}}
+            </div>
+            {%- for input in equation.inputs.split(',') %}
+            <div class="input-wrapper">
+                <label for="{{input}}" class="input-label">{{input}}</label>
+                <br>
+                <input type="text" placeholder="input" name="{{input}}" class="input" id="{{input}}" value="{{output[input]}}" onkeydown="
+                    // try {
+                    //     clearTimeout(b)
+                    // } catch (error) {
+                        
+                    // }
+                    // b = setTimeout(() => document.forms['inputs'].submit(), 3000)
+                ">
+                <br>
+            </div>
+            {%- endfor %}
+            <div class="submit" onclick="if(validateForm()){document.getElementById('inputs').submit()}">
+                <span>calculate</span>
+            </div>
+            <div class="spacer" style="height: 1rem; min-height: 1rem;"></div>
+            {% if tex %}
+            {{ tex }}
+            <div class="spacer" style="height: 1rem; min-height: 1rem;"></div>
+            {% endif %}
+        </form>
+    </div>
+
+</div>
+<script>
+    function validateForm() {
+        let form = document.forms['inputs'];
+        let inputNum = form.length;
+        let notEmpty = 0;
+        for (let i = 0; i < form.length; i++) {
+            if (form[i].value != "") {
+                notEmpty += 1
+            }
+        }
+        if (notEmpty + 1 == inputNum) {
+            return true
+        }
+        return false
+    }
+</script>
+{% endblock %}
