@@ -2,7 +2,7 @@
 
 ## 🚧The website is in progress🚧
 
-## 👉 ~~**Live website**~~ 👈
+## [👉 **Live website** 👈](https://electrical-physics-calculator.herokuapp.com/)
 
 ## Languages: 
 Back-end:
